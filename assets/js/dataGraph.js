@@ -10,7 +10,7 @@ const data = {
   labels: labels,
   datasets: [
     {
-      label: "Compte", //Affichage du compte sur la courbe
+          label: "Compte", //Affichage du compte sur la courbe
       data: datapoints, //points de la courbe
       borderColor: "purple", //Couleur de la courbe
       //   fill: true,    colore le dessous de la courbe
@@ -71,54 +71,53 @@ function addOperator(posCourbe, montant) {
 
 //affichage débit/crédit
 let allOp = document.querySelector("#allOperation"); //bouton "tout"
-
 allOp.style.backgroundColor = "black"; //couleur de fond par défaut du bouton
 
-let credit = document.getElementById("credit"); //bouton crédit
+let creditOp = document.getElementById("creditOperation"); //bouton crédit
+let debitOp = document.getElementById("debitOperation"); // bouton débit
 
-let debit = document.getElementById("debit"); // bouton débit
-let opCredit = document.querySelectorAll(".credit"); // ensemble des opérations de crédit [class credit dans html ]
-let opDebit = document.querySelectorAll(".debit"); // ensemble des opérations de débit [class debit dans html ]
-let opTout = document.querySelectorAll(".operation"); // ensemble des opérations  [class operation dans html ]
+let allCreditValue = document.querySelectorAll(".credit"); // ensemble des opérations de crédit [class credit dans html ]
+let AllDebitValue = document.querySelectorAll(".debit"); // ensemble des opérations de débit [class debit dans html ]
+let AllopValue = document.querySelectorAll(".operation"); // ensemble des opérations  [class operation dans html ]
 
 allOp.addEventListener("click", (e) => {
   // écoute du bouton "tout"
   allOp.style.backgroundColor = "black"; // au "click" bouton "tout" = noir et les autres = blanc
-  credit.style.backgroundColor = "white";
-  debit.style.backgroundColor = "white";
-  opTout.forEach(function (element) {
+  creditOp.style.backgroundColor = "white";
+  debitOp.style.backgroundColor = "white";
+  AllopValue.forEach(function (element) {
     // tous les éléments dans [class = operation] apparaissent
     element.style.display = "block";
   });
 });
 
-credit.addEventListener("click", (e) => {
+creditOp.addEventListener("click", (e) => {
   // écoute du bouton "crédit"
   allOp.style.backgroundColor = "white"; // au "click" bouton "crédit" = noir et les autres = blanc
-  credit.style.backgroundColor = "black";
-  debit.style.backgroundColor = "white";
-  opCredit.forEach(function (element) {
+  creditOp.style.backgroundColor = "black";
+  debitOp.style.backgroundColor = "white";
+  allCreditValue.forEach(function (element) {
     // fonction 1: tous les éléments dans [class = credit] apparaissent
     element.style.display = "block";
   });
 
-  opDebit.forEach(function (element) {
+  AllDebitValue.forEach(function (element) {
     // fonction 2: tous les éléments dans [class = debit] disparaissent
     element.style.display = "none";
   });
 });
 
-debit.addEventListener("click", (e) => {
+debitOp.addEventListener("click", (e) => {
   // écoute du bouton "debit"
   allOp.style.backgroundColor = "white"; // au "click" bouton "debit" = noir et les autres = blanc
-  credit.style.backgroundColor = "white";
-  debit.style.backgroundColor = "black";
-  opDebit.forEach(function (element) {
+  creditOp.style.backgroundColor = "white";
+  debitOp.style.backgroundColor = "black";
+  AllDebitValue.forEach(function (element) {
     // fonction 1: tous les éléments dans [class = debit] apparaissent
     element.style.display = "block";
   });
 
-  opCredit.forEach(function (element) {
+  allCreditValue.forEach(function (element) {
     // fonction 2: tous les éléments dans [class = debit] disparaissent
     element.style.display = "none";
   });
